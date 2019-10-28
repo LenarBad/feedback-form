@@ -1,0 +1,17 @@
+:root {
+    --xs: 0;
+    --sm: 600;
+    --md: 960;
+    --lg: 1280;
+    --xl: 1920;
+
+    --font-size-base: 24px;
+
+    --indent-s: 8px;
+    --indent-m: 16px;
+    --indent-l: 24px;
+    --indent-xl: 36px;
+
+
+    --max-width-limit: 1400px;
+}
