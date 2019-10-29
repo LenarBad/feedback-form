@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/lenar-form-feedback/precache-manifest.d08285ebe42cfef3daa7c801a32860d1.js"
+  "/lenar-form-feedback/precache-manifest.ae16caa2688b2fda35e72fb2aadd56f6.js"
 );
 
 self.addEventListener('message', (event) => {
