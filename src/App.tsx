@@ -59,7 +59,7 @@ const steps = ['', '', '', ''];
  */
 export default function App() {
     const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(2);
+    const [activeStep, setActiveStep] = React.useState(0);
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
@@ -155,7 +155,7 @@ export default function App() {
                                         color="primary"
                                         onClick={handleNext}
                                         className={classes.button}
-                                        // disabled={!(globalData[activeStep] && globalData[activeStep].isValid)}
+                                        disabled={!(globalData[activeStep] && globalData[activeStep].isValid)}
                                     >
                                         {activeStep === steps.length - 1 ? 'Place order' : 'CONTINUE'}
                                     </Button>}
