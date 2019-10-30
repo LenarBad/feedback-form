@@ -1,6 +1,4 @@
 export interface Values {
-    product: string;
-    date: null | Date;
-    impression: string;
-    wasUsed: string;
+    reviewText: string;
+    freeProduct: string;
 }

@@ -1,9 +1,25 @@
-export enum Expression {
-    VERY_SATISFIED = 'Very Satisfied',
-    SOMEWHAT_SATISFIED = 'Somewhat Satisfied',
-    NEITHER_SATISFIED_NOR_DISSATISFIED = 'Neither Satisfied nor Dissatisfied',
-    SOMEWHAT_DISSATISFIED = 'Somewhat Dissatisfied',
-    VERY_DISSATISFIED = 'Very Dissatisfied'
+export enum Rating {
+    VERY_SATISFIED = '0',
+    SOMEWHAT_SATISFIED = '1',
+    NEITHER_SATISFIED_NOR_DISSATISFIED = '2',
+    SOMEWHAT_DISSATISFIED = '3',
+    VERY_DISSATISFIED = '4'
+}
+
+const RatingText = {
+    [Rating.VERY_SATISFIED.toString()]: 'Very Satisfied',
+    [Rating.SOMEWHAT_SATISFIED.toString()]: 'Somewhat Satisfied',
+    [Rating.NEITHER_SATISFIED_NOR_DISSATISFIED.toString()]: 'Neither Satisfied nor Dissatisfied',
+    [Rating.SOMEWHAT_DISSATISFIED.toString()]: 'Somewhat Dissatisfied',
+    [Rating.VERY_DISSATISFIED.toString()]: 'Very Dissatisfied',
+};
+
+export function RatingToText(rating: Rating): string {
+    return RatingText[rating];
+}
+
+export function hasMinRating(rating: Rating, target: Rating): boolean {
+    return target <= rating;
 }
 
 export enum UsaState {

@@ -1,5 +1,5 @@
 import { Values } from './types';
 
-export function validation({ product, date, impression, wasUsed }: Values): boolean {
-    return !!(product && date && impression && wasUsed);
+export function validation({ product, date, rating, wasUsed }: Values): boolean {
+    return !!(product && date && rating && wasUsed);
 }

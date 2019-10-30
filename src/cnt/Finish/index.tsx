@@ -55,6 +55,8 @@ function Finish() {
                 <Grid item xs={12}>
 
                     ....... another text ............
+                    <br/>
+                    you must show the date these offers are valid and bla bla bla
                 </Grid>
 
 

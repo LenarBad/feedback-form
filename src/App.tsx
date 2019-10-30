@@ -14,6 +14,7 @@ import Order from 'cnt/Order';
 import {Values as OrderValues} from 'cnt/Order/types';
 import Finish from 'cnt/Finish';
 import Review from 'cnt/Review';
+import { Values as ValuesReview } from 'cnt/Review/types';
 
 const useStyles = makeStyles((theme: Theme) => ({
     appBar: {
@@ -83,12 +84,23 @@ export default function App() {
     }, []);
 
     /**
-     * for product
+     * for Data Order
      */
     const handleChangeDataOrder = React.useCallback((data: { values: OrderValues; isValid: boolean; }) => {
         setGlobalData((d: any) => {
             const nextData = d.slice();
             nextData[1] = data;
+            return nextData;
+        });
+    }, []);
+
+    /**
+     * for review
+     */
+    const handleChangeReview = React.useCallback((data: { values: ValuesReview; isValid: boolean; }) => {
+        setGlobalData((d: any) => {
+            const nextData = d.slice();
+            nextData[2] = data;
             return nextData;
         });
     }, []);
@@ -102,7 +114,9 @@ export default function App() {
                 return <Order onChange={handleChangeDataOrder}
                               initialValues={globalData[1] && globalData[1].values ? globalData[1].values : undefined}/>;
             case 2:
-                return <Review/>;
+                return <Review onChange={handleChangeReview} onNextStep={handleNext}
+                    rating={globalData[0] && globalData[0].values && globalData[0].values.rating}
+                               initialValues={globalData[2] && globalData[2].values ? globalData[2].values : undefined}/>;
             case 3:
                 return <Finish/>;
             default:
@@ -145,12 +159,12 @@ export default function App() {
                                 {getStepContent(activeStep)}
 
                                 <div className={classes.buttons}>
-                                    {activeStep !== 0 && activeStep !== 3 && (
+                                    {(activeStep === 1) && (
                                         <Button onClick={handleBack} className={classes.button}>
                                             Back
                                         </Button>
                                     )}
-                                    {activeStep !== 3 && <Button
+                                    {activeStep <= 1 && <Button
                                         variant="contained"
                                         color="primary"
                                         onClick={handleNext}

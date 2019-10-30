@@ -13,7 +13,7 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import { Expression } from 'appConstants';
+import { Rating, RatingToText } from 'appConstants';
 
 import { Values } from './types';
 import { validation } from './validation';
@@ -66,7 +66,7 @@ function ProductForm({ onChange, initialValues }: Props) {
     const [values, setValues] = React.useState<Values>(initialValues || {
         product: '',
         date: null,
-        impression: '',
+        rating: '',
         wasUsed: '',
     });
 
@@ -78,6 +78,7 @@ function ProductForm({ onChange, initialValues }: Props) {
     };
     const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
         const { name, value } = event.target;
+
         setValues(oldValues => ({
             ...oldValues,
             [name as string]: value,
@@ -135,17 +136,18 @@ function ProductForm({ onChange, initialValues }: Props) {
                         }}
                         maxDate={new Date()}
                         minDate={new Date('2019-06-01')}
+                        autoOk
                     />
                     </MuiPickersUtilsProvider>
                 </Grid>
 
                 <Grid item xs={12}>
-                    <RadioGroup aria-label="impression" value={values.impression} onChange={handleChange}>
-                        <FormControlLabel value={Expression.VERY_SATISFIED} control={<Radio />} name="impression" label={Expression.VERY_SATISFIED} />
-                        <FormControlLabel value={Expression.SOMEWHAT_SATISFIED} control={<Radio />} name="impression" label={Expression.SOMEWHAT_SATISFIED} />
-                        <FormControlLabel value={Expression.NEITHER_SATISFIED_NOR_DISSATISFIED} name="impression" control={<Radio />} label={Expression.NEITHER_SATISFIED_NOR_DISSATISFIED} />
-                        <FormControlLabel value={Expression.SOMEWHAT_DISSATISFIED} control={<Radio />} name="impression" label={Expression.SOMEWHAT_DISSATISFIED} />
-                        <FormControlLabel value={Expression.VERY_DISSATISFIED} control={<Radio />} name="impression" label={Expression.VERY_DISSATISFIED} />
+                    <RadioGroup aria-label="rating" value={values.rating.toString()} onChange={handleChange}>
+                        <FormControlLabel value={Rating.VERY_SATISFIED} control={<Radio />} name="rating" label={RatingToText(Rating.VERY_SATISFIED)} />
+                        <FormControlLabel value={Rating.SOMEWHAT_SATISFIED} control={<Radio />} name="rating" label={RatingToText(Rating.SOMEWHAT_SATISFIED)} />
+                        <FormControlLabel value={Rating.NEITHER_SATISFIED_NOR_DISSATISFIED} name="rating" control={<Radio />} label={RatingToText(Rating.NEITHER_SATISFIED_NOR_DISSATISFIED)} />
+                        <FormControlLabel value={Rating.SOMEWHAT_DISSATISFIED} control={<Radio />} name="rating" label={RatingToText(Rating.SOMEWHAT_DISSATISFIED)} />
+                        <FormControlLabel value={Rating.VERY_DISSATISFIED} control={<Radio />} name="rating" label={RatingToText(Rating.VERY_DISSATISFIED)} />
                     </RadioGroup>
                 </Grid>
 

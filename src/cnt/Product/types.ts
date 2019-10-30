@@ -1,6 +1,6 @@
 export interface Values {
     product: string;
     date: null | Date;
-    impression: string;
+    rating: string;
     wasUsed: string;
 }
