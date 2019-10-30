@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/lenar-form-feedback/static/css/main.5149b99d.chunk.css",
-    "main.js": "/lenar-form-feedback/static/js/main.7eb1c330.chunk.js",
-    "main.js.map": "/lenar-form-feedback/static/js/main.7eb1c330.chunk.js.map",
+    "main.js": "/lenar-form-feedback/static/js/main.cb88116c.chunk.js",
+    "main.js.map": "/lenar-form-feedback/static/js/main.cb88116c.chunk.js.map",
     "runtime-main.js": "/lenar-form-feedback/static/js/runtime-main.11912c67.js",
     "runtime-main.js.map": "/lenar-form-feedback/static/js/runtime-main.11912c67.js.map",
-    "static/js/2.38b275c5.chunk.js": "/lenar-form-feedback/static/js/2.38b275c5.chunk.js",
-    "static/js/2.38b275c5.chunk.js.map": "/lenar-form-feedback/static/js/2.38b275c5.chunk.js.map",
+    "static/js/2.34b72c61.chunk.js": "/lenar-form-feedback/static/js/2.34b72c61.chunk.js",
+    "static/js/2.34b72c61.chunk.js.map": "/lenar-form-feedback/static/js/2.34b72c61.chunk.js.map",
     "index.html": "/lenar-form-feedback/index.html",
-    "precache-manifest.ae16caa2688b2fda35e72fb2aadd56f6.js": "/lenar-form-feedback/precache-manifest.ae16caa2688b2fda35e72fb2aadd56f6.js",
+    "precache-manifest.f5a259095622092b3463d8cb0092c665.js": "/lenar-form-feedback/precache-manifest.f5a259095622092b3463d8cb0092c665.js",
     "service-worker.js": "/lenar-form-feedback/service-worker.js",
     "static/css/main.5149b99d.chunk.css.map": "/lenar-form-feedback/static/css/main.5149b99d.chunk.css.map",
     "static/media/765632.png": "/lenar-form-feedback/static/media/765632.6039c88b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.11912c67.js",
-    "static/js/2.38b275c5.chunk.js",
+    "static/js/2.34b72c61.chunk.js",
     "static/css/main.5149b99d.chunk.css",
-    "static/js/main.7eb1c330.chunk.js"
+    "static/js/main.cb88116c.chunk.js"
   ]
 }
