@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -63,7 +64,7 @@ function ProductForm({onChange, initialValues}: Props) {
     const classes = useStyles();
     const [values, setValues] = React.useState<Values>(initialValues || {
         product: '',
-        date: null,
+        datePurchase: null,
         rating: '',
         wasUsed: '',
     });
@@ -71,7 +72,7 @@ function ProductForm({onChange, initialValues}: Props) {
     const handleDateChange = (date: Date | null) => {
         setValues(oldValues => ({
             ...oldValues,
-            date,
+            datePurchase: date,
         }));
     };
     const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
@@ -98,7 +99,7 @@ function ProductForm({onChange, initialValues}: Props) {
 
             <Grid container direction="column" spacing={5} className={classes.grid}>
                 <Grid item xs={12}>
-                    <div className={cssCommon.signFormField}>Which product did you purchase ?</div>
+                    <div className={cn(cssCommon.signFormField, cssCommon.requireField)}>Which product did you purchase ?</div>
 
                     <InputLabel htmlFor="product-name"/>
                     <Select
@@ -115,7 +116,7 @@ function ProductForm({onChange, initialValues}: Props) {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <div className={cssCommon.signFormField}>Date Purchased</div>
+                    <div className={cn(cssCommon.signFormField, cssCommon.requireField)}>Date Purchased</div>
 
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
@@ -124,8 +125,8 @@ function ProductForm({onChange, initialValues}: Props) {
                             format="MM/dd/yyyy"
                             margin="normal"
                             id="date-picker-inline"
-                            name="date"
-                            value={values.date}
+                            name="datePurchase"
+                            value={values.datePurchase}
                             onChange={handleDateChange}
                             KeyboardButtonProps={{
                                 'aria-label': 'change date',
@@ -154,7 +155,7 @@ function ProductForm({onChange, initialValues}: Props) {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <div className={cssCommon.signFormField}>Have you been using this product for at least 7 days ?
+                    <div className={cn(cssCommon.signFormField, cssCommon.requireField)}>Have you been using this product for at least 7 days ?
                     </div>
 
                     <RadioGroup aria-label="have using" value={values.wasUsed} onChange={handleChange}>

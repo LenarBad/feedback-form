@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import FormGlobalData from './FormGlobalData';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -35,9 +36,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-function Finish() {
+function Finish({ globalData }: { globalData: any }) {
     const classes = useStyles();
-
 
     return (
         <>
@@ -58,9 +58,9 @@ function Finish() {
                     <br/>
                     you must show the date these offers are valid and bla bla bla
                 </Grid>
-
-
             </Grid>
+
+            <FormGlobalData globalData={globalData} />
         </>
     );
 }

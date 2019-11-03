@@ -14,7 +14,7 @@ import Order from 'cnt/Order';
 import {Values as OrderValues} from 'cnt/Order/types';
 import Finish from 'cnt/Finish';
 import Review from 'cnt/Review';
-import { Values as ValuesReview } from 'cnt/Review/types';
+import {Values as ValuesReview} from 'cnt/Review/types';
 
 const useStyles = makeStyles((theme: Theme) => ({
     appBar: {
@@ -72,6 +72,39 @@ export default function App() {
 
     const [globalData, setGlobalData] = React.useState<any>([undefined, undefined, undefined]);
 
+    // stub data
+    // const [globalData, setGlobalData] = React.useState<any>([
+    //     {
+    //         isValid: true,
+    //         values: {
+    //             product: 'product_2',
+    //             datePurchase: new Date().setDate(3),
+    //             rating: 5,
+    //             wasUsed: 'Yes'
+    //         },
+    //     },
+    //     {
+    //         isValid: true,
+    //         values: {
+    //             first: 'First',
+    //             last: 'Last',
+    //             orderNumber: '2341234-2342134',
+    //             email: 'email@email.email',
+    //             street: 'streeeeeet',
+    //             city: 'ciiiiity',
+    //             zipCode: 'zzzzzipCode',
+    //             usaState: 'Colorado',
+    //             consentToSpecialOffer: 'Yes'
+    //         }
+    //     },
+    //     {
+    //         isValid: true,
+    //         values: {
+    //             reviewText: 'asdfasdfasf asdf jasfasdfasdf asf asfasfausfaspfasf;asg[ as g;sgifgsfdfgsget wtk lwtwkrth werte rtwer[ twertwertewr[[wyrtyerw[tewrot ert welrt werptweortowertwoertwet;;;gsfhasidgpfasgi[ashfgasdfgsidfgsdf;gasdf;gatqy[rafg3[qwrgyh;asghaus[gqw[ ptyqaw[[[[gsy;igasß§',
+    //             freeProduct: 'product_3',
+    //         }
+    //     }]);
+
     /**
      * for product
      */
@@ -115,10 +148,10 @@ export default function App() {
                               initialValues={globalData[1] && globalData[1].values ? globalData[1].values : undefined}/>;
             case 2:
                 return <Review onChange={handleChangeReview} onNextStep={handleNext}
-                    rating={globalData[0] && globalData[0].values && globalData[0].values.rating}
+                               rating={globalData[0] && globalData[0].values && globalData[0].values.rating}
                                initialValues={globalData[2] && globalData[2].values ? globalData[2].values : undefined}/>;
             case 3:
-                return <Finish/>;
+                return <Finish globalData={globalData} />;
             default:
                 throw new Error('Unknown step');
         }

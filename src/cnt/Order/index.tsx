@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -178,7 +179,7 @@ function Order({onChange, initialValues}: Props) {
 
 
                 <Grid item xs={12}>
-                    <div className={cssCommon.signFormField}>State</div>
+                    <div className={cn(cssCommon.signFormField, cssCommon.requireField)}>State</div>
 
                     <InputLabel htmlFor="usaState"/>
                     <Select
@@ -196,7 +197,7 @@ function Order({onChange, initialValues}: Props) {
 
 
                 <Grid item xs={12}>
-                    <div className={cssCommon.signFormField}>Please send me special offers and samples.</div>
+                    <div className={cn(cssCommon.signFormField, cssCommon.requireField)}>Please send me special offers and samples.</div>
 
                     <RadioGroup aria-label="have using" value={values.consentToSpecialOffer} onChange={handleChange}>
                         <FormControlLabel value="Yes" control={<Radio/>} name="consentToSpecialOffer" label="Yes"/>
