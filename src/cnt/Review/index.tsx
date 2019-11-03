@@ -15,6 +15,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 import {hasMinRating, Rating} from 'appConstants';
+import {freeProducts} from 'data/products';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -131,9 +132,7 @@ function Review({onChange, initialValues, onNextStep, rating}: Props) {
                             id: 'free-product',
                         }}
                     >
-                        <MenuItem value="Product 1">Product 1</MenuItem>
-                        <MenuItem value="Product 2">Product 2</MenuItem>
-                        <MenuItem value="Product 3">Product 3</MenuItem>
+                        {freeProducts.map(it => <MenuItem key={it.code} value={it.code}>{it.name}</MenuItem>)}
                     </Select>
                 </Grid>
             </Grid>

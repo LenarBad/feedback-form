@@ -5,20 +5,18 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-} from '@material-ui/pickers';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
+import {KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import { Rating, RatingToText } from 'appConstants';
+import {Rating, RatingToText} from 'appConstants';
 
-import { Values } from './types';
-import { validation } from './validation';
+import {Values} from './types';
+import {validation} from './validation';
 
 import cssCommon from 'styles/common.module.css';
+import {products} from "data/products";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -61,7 +59,7 @@ interface Props {
     initialValues?: any;
 }
 
-function ProductForm({ onChange, initialValues }: Props) {
+function ProductForm({onChange, initialValues}: Props) {
     const classes = useStyles();
     const [values, setValues] = React.useState<Values>(initialValues || {
         product: '',
@@ -77,7 +75,7 @@ function ProductForm({ onChange, initialValues }: Props) {
         }));
     };
     const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
 
         setValues(oldValues => ({
             ...oldValues,
@@ -112,51 +110,56 @@ function ProductForm({ onChange, initialValues }: Props) {
                             id: 'product-name',
                         }}
                     >
-                        <MenuItem value="Product 1">Product 1</MenuItem>
-                        <MenuItem value="Product 2">Product 2</MenuItem>
-                        <MenuItem value="Product 3">Product 3</MenuItem>
+                        {products.map(it => <MenuItem key={it.code} value={it.code}>{it.name}</MenuItem>)}
                     </Select>
                 </Grid>
 
                 <Grid item xs={12}>
-                    <div className={cssCommon.signFormField}>Date Purchased </div>
+                    <div className={cssCommon.signFormField}>Date Purchased</div>
 
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        id="date-picker-inline"
-                        name="date"
-                        value={values.date}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                        maxDate={new Date()}
-                        minDate={new Date('2019-06-01')}
-                        autoOk
-                    />
+                        <KeyboardDatePicker
+                            disableToolbar
+                            variant="inline"
+                            format="MM/dd/yyyy"
+                            margin="normal"
+                            id="date-picker-inline"
+                            name="date"
+                            value={values.date}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                            maxDate={new Date()}
+                            minDate={new Date('2019-06-01')}
+                            autoOk
+                        />
                     </MuiPickersUtilsProvider>
                 </Grid>
 
                 <Grid item xs={12}>
                     <RadioGroup aria-label="rating" value={values.rating.toString()} onChange={handleChange}>
-                        <FormControlLabel value={Rating.VERY_SATISFIED} control={<Radio />} name="rating" label={RatingToText(Rating.VERY_SATISFIED)} />
-                        <FormControlLabel value={Rating.SOMEWHAT_SATISFIED} control={<Radio />} name="rating" label={RatingToText(Rating.SOMEWHAT_SATISFIED)} />
-                        <FormControlLabel value={Rating.NEITHER_SATISFIED_NOR_DISSATISFIED} name="rating" control={<Radio />} label={RatingToText(Rating.NEITHER_SATISFIED_NOR_DISSATISFIED)} />
-                        <FormControlLabel value={Rating.SOMEWHAT_DISSATISFIED} control={<Radio />} name="rating" label={RatingToText(Rating.SOMEWHAT_DISSATISFIED)} />
-                        <FormControlLabel value={Rating.VERY_DISSATISFIED} control={<Radio />} name="rating" label={RatingToText(Rating.VERY_DISSATISFIED)} />
+                        <FormControlLabel value={Rating.VERY_SATISFIED} control={<Radio/>} name="rating"
+                                          label={RatingToText(Rating.VERY_SATISFIED)}/>
+                        <FormControlLabel value={Rating.SOMEWHAT_SATISFIED} control={<Radio/>} name="rating"
+                                          label={RatingToText(Rating.SOMEWHAT_SATISFIED)}/>
+                        <FormControlLabel value={Rating.NEITHER_SATISFIED_NOR_DISSATISFIED} name="rating"
+                                          control={<Radio/>}
+                                          label={RatingToText(Rating.NEITHER_SATISFIED_NOR_DISSATISFIED)}/>
+                        <FormControlLabel value={Rating.SOMEWHAT_DISSATISFIED} control={<Radio/>} name="rating"
+                                          label={RatingToText(Rating.SOMEWHAT_DISSATISFIED)}/>
+                        <FormControlLabel value={Rating.VERY_DISSATISFIED} control={<Radio/>} name="rating"
+                                          label={RatingToText(Rating.VERY_DISSATISFIED)}/>
                     </RadioGroup>
                 </Grid>
 
                 <Grid item xs={12}>
-                    <div className={cssCommon.signFormField}>Have you been using this product for at least 7 days ?</div>
+                    <div className={cssCommon.signFormField}>Have you been using this product for at least 7 days ?
+                    </div>
 
                     <RadioGroup aria-label="have using" value={values.wasUsed} onChange={handleChange}>
-                        <FormControlLabel value="Yes" control={<Radio />} name="wasUsed" label="Yes" />
-                        <FormControlLabel value="No" control={<Radio />} name="wasUsed" label="No" />
+                        <FormControlLabel value="Yes" control={<Radio/>} name="wasUsed" label="Yes"/>
+                        <FormControlLabel value="No" control={<Radio/>} name="wasUsed" label="No"/>
                     </RadioGroup>
                 </Grid>
 
